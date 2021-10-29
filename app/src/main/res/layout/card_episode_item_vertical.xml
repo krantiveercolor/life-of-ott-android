@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view_home"
+    android:layout_width="@dimen/_170sdp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_medium">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/lyt_parent"
+            style="@style/RippleStyleBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:contentDescription="@string/episode"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/poster_placeholder" />
+
+                    <!--<ImageView
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_outline_play_circle_filled_24px"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp" />-->
+
+                    <TextView
+                        android:id="@+id/play_status_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/transparent_round_back"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        tools:text="Play Now" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="Episode name" />
+
+                    <TextView
+                        android:id="@+id/season_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/grey_60"
+                        android:textSize="@dimen/_11sdp"
+                        tools:text="Season name" />
+
+                    <TextView
+                        android:id="@+id/publish_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/grey_60"
+                        android:textSize="@dimen/_11sdp"
+                        tools:text="Publish Date" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+

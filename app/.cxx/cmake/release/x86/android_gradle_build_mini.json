@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "E:\\D_Folder\\Android Project Source Codes\\Android Projects\\Moon Ott\\Android\\MoonOttLatest\\app\\src\\main\\jni\\CMakeLists.txt",
+    "C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\ndk\\21.3.6528147\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\ndk\\21.3.6528147\\build\\cmake\\platforms.cmake"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\D_Folder\\Android Project Source Codes\\Android Projects\\Moon Ott\\Android\\MoonOttLatest\\app\\.cxx\\cmake\\release\\x86\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\D_Folder\\Android Project Source Codes\\Android Projects\\Moon Ott\\Android\\MoonOttLatest\\app\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "api_config-Release-x86": {
+      "artifactName": "api_config",
+      "buildCommand": "C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\D_Folder\\Android Project Source Codes\\Android Projects\\Moon Ott\\Android\\MoonOttLatest\\app\\.cxx\\cmake\\release\\x86\" api_config",
+      "abi": "x86",
+      "output": "E:\\D_Folder\\Android Project Source Codes\\Android Projects\\Moon Ott\\Android\\MoonOttLatest\\app\\build\\intermediates\\cmake\\release\\obj\\x86\\libapi_config.so",
+      "runtimeFiles": []
+    }
+  }
+}

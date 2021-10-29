@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context=".fragments.CMSFragment">
+
+    <TextView
+        android:id="@+id/cmsText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:lineSpacingExtra="1.5dp"
+        android:lineSpacingMultiplier="1.2"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        tools:text="@string/lorem_ipsum" />
+
+</androidx.core.widget.NestedScrollView>

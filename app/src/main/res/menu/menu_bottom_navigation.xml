@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bottom_movie"
+        android:icon="@drawable/ic_bottom_movie"
+        android:iconTint="@color/white"
+        android:title="@string/movie" />
+
+    <item
+        android:id="@+id/bottom_pay_watch"
+        android:icon="@drawable/ic_bottom_web_series"
+        android:iconTint="@color/white"
+        android:title="@string/pay_watch" />
+
+
+    <item
+        android:id="@+id/bottom_home"
+        android:icon="@drawable/home"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottom_series"
+        android:icon="@drawable/ic_bottom_livetv"
+        android:iconTint="@color/white"
+        android:title="@string/web_series" />
+    <item
+        android:id="@+id/ic_bottom_menu"
+        android:icon="@drawable/ic_hamburger_icon"
+        android:iconTint="@color/white"
+        android:title="@string/more" />
+
+</menu>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "552842965193",
+    "project_id": "lifeofott-21325",
+    "storage_bucket": "lifeofott-21325.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552842965193:android:3e76c91da5042d4fed9d18",
+        "android_client_info": {
+          "package_name": "com.life.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552842965193-8256nfuh6jrkbk1b8in2cnqhoqg4sur6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFQld8Fnc67g_8yx9JtOm_yxNRBuIBz9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552842965193-8256nfuh6jrkbk1b8in2cnqhoqg4sur6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

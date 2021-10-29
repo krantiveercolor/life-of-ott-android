@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Calibre Font-->
+    <declare-styleable name="CalibreTextView">
+        <attr name="font_type_calibre" />
+    </declare-styleable>
+    <attr name="font_type_calibre">
+        <enum name="Regular" value="1" />
+        <enum name="bold" value="2" />
+        <enum name="semibold" value="3" />
+    </attr>
+    <declare-styleable name="Theme">
+        <!-- Default Spinner style. -->
+        <attr name="spinnerStyle" format="reference" />
+        <!-- Default dropdown Spinner style. -->
+        <attr name="dropDownSpinnerStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MultiSpinnerSearch">
+        <attr name="hintText" format="string" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Piashsarker:AndroidAppUpdateLibrary:1.0.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/459bb8590dc62326875ae00608c610ab/transformed/jetified-AndroidAppUpdateLibrary-1.0.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/459bb8590dc62326875ae00608c610ab/transformed/jetified-AndroidAppUpdateLibrary-1.0.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/459bb8590dc62326875ae00608c610ab/transformed/jetified-AndroidAppUpdateLibrary-1.0.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/cab0be0c5005e034798cb0cc2c0a29ac/transformed/jetified-AndroidAppUpdateLibrary-1.0.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cab0be0c5005e034798cb0cc2c0a29ac/transformed/jetified-AndroidAppUpdateLibrary-1.0.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cab0be0c5005e034798cb0cc2c0a29ac/transformed/jetified-AndroidAppUpdateLibrary-1.0.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Piashsarker/AndroidAppUpdateLibrary/1.0.3/fb77b0e5a84ec95bc936964b76d99272ebb06ee3/AndroidAppUpdateLibrary-1.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

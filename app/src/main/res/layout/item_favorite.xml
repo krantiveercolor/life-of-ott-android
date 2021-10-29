@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp">
+
+    <ImageView
+        android:id="@+id/favorite_img_view"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:scaleType="centerCrop"
+         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toStartOf="@id/remove_favorite_view"
+        android:layout_toEndOf="@id/favorite_img_view"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/favorite_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGold"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            tools:text="Enjoy the trip" />
+
+        <TextView
+            android:id="@+id/favorite_desc_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey_40"
+            android:textSize="@dimen/_12ssp"
+            tools:text="lorem ipsum is simply dummy text of the printing " />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/remove_favorite_view"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_close_circle" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/favorite_img_view"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/grey_90" />
+
+</RelativeLayout>

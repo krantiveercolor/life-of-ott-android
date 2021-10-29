@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/movie_img_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop" />
+
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/movies_premium_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/premium_bg"
+            android:fontFamily="@font/vag_rounded_regular"
+            android:gravity="center"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:text="@string/premium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp" />
+
+    </FrameLayout>
+
+
+</androidx.cardview.widget.CardView>

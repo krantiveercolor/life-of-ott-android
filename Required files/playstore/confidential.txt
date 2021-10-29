@@ -1,0 +1,5 @@
+keystore pass : action@123
+
+Alias key : key0
+pass : action@123
+
