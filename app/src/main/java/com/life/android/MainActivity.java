@@ -40,6 +40,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.life.android.adapters.NavigationAdapter;
 import com.life.android.database.DatabaseHelper;
 import com.life.android.fragments.HomeFragment;
@@ -311,14 +314,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
                 }
                 case "Sign Out": {
-                    new AlertDialog.Builder(MainActivity.this)
+                    new AlertDialog.Builder(MainActivity.this, R.style.DialogeTheme)
                             .setMessage("Are you sure to logout from " + getString(R.string.app_name) + "?")
                             .setPositiveButton("YES", (dialog, which) -> {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if (user != null) {
                                     FirebaseAuth.getInstance().signOut();
-
                                 }
+
+                                signOutFromGoogle();
 
                                 SharedPreferences.Editor editor = getSharedPreferences(Constants.USER_LOGIN_STATUS, MODE_PRIVATE).edit();
                                 editor.putBoolean(Constants.USER_LOGIN_STATUS, false);
@@ -411,6 +415,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomifyNavigationView.setActiveNavigationIndex(2);
     }
 
+    private void signOutFromGoogle() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.
+                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                build();
+
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
+        googleSignInClient.signOut();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -488,6 +501,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mDrawerLayout.closeDrawers();
         return true;
     }
+
 
     private void showTermServicesDialog() {
         final Dialog dialog = new Dialog(this);

@@ -74,6 +74,22 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splashscreen);
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.life.android",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String s = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                Log.d("KeyHash:", s);
+                Log.d(TAG, "onCreate: " + s);
+            }
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+
+        }
+
         ImageView splashImgView = findViewById(R.id.splash_img_view);
         ImageView splashBgImgView = findViewById(R.id.splashBgImgView);
         Glide.with(this).load(R.drawable.life_logo).into(splashImgView);

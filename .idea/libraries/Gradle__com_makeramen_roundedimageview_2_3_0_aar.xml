@@ -1,13 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.makeramen:roundedimageview:2.3.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/197556025c36eeac68007c047dd7aa20/transformed/jetified-roundedimageview-2.3.0/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1a3b0e9533eb8e2e3ba1fcb1b1f1dec5/transformed/jetified-roundedimageview-2.3.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/197556025c36eeac68007c047dd7aa20/transformed/jetified-roundedimageview-2.3.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/197556025c36eeac68007c047dd7aa20/transformed/jetified-roundedimageview-2.3.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/197556025c36eeac68007c047dd7aa20/transformed/jetified-roundedimageview-2.3.0/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1a3b0e9533eb8e2e3ba1fcb1b1f1dec5/transformed/jetified-roundedimageview-2.3.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1a3b0e9533eb8e2e3ba1fcb1b1f1dec5/transformed/jetified-roundedimageview-2.3.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1a3b0e9533eb8e2e3ba1fcb1b1f1dec5/transformed/jetified-roundedimageview-2.3.0/AndroidManifest.xml" />

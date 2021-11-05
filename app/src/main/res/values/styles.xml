@@ -299,7 +299,7 @@
     </style>
 
     <style name="DialogeTheme" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorAccent">@android:color/black</item>
     </style>
 
 </resources>

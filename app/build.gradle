@@ -18,7 +18,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         manifestPlaceholders = [
-                onesignal_app_id               : '69cf2dc7-8fd7-411d-a4da-d52f906cdee9',
+                onesignal_app_id               : 'a9a10cb7-27dc-4be6-aa01-2314025fb386',
                 onesignal_google_project_number: 'REMOTE'
         ]
     }
@@ -169,6 +169,8 @@ dependencies {
     implementation "com.google.firebase:firebase-auth"
 
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
     implementation 'com.romainpiel.shimmer:library:1.4.0@aar'
 

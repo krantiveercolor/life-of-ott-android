@@ -1,7 +1,7 @@
 <resources>
-    <string name="facebook_app_id" translatable="false">1548843298607838</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb1548843298607838</string>
-    <string name="facebook_application_id" translatable="false">1548843298607838</string>
+    <string name="facebook_app_id" translatable="false">618659679291730</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb618659679291730</string>
+    <string name="facebook_application_id" translatable="false">618659679291730</string>
 
     //admob
     <string name="admob_application_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>

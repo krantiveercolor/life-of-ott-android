@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "552842965193",
-    "project_id": "lifeofott-21325",
-    "storage_bucket": "lifeofott-21325.appspot.com"
+    "project_number": "701656412127",
+    "project_id": "lifeott",
+    "storage_bucket": "lifeott.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:552842965193:android:3e76c91da5042d4fed9d18",
+        "mobilesdk_app_id": "1:701656412127:android:95f1bf5e6668ae13ffde6a",
         "android_client_info": {
           "package_name": "com.life.android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "552842965193-8256nfuh6jrkbk1b8in2cnqhoqg4sur6.apps.googleusercontent.com",
+          "client_id": "701656412127-ef0fl8ore8692vbmng8llse204rddh4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.life.android",
+            "certificate_hash": "c136c251e6f807bd0bdf78cf8a38e3c7c938465c"
+          }
+        },
+        {
+          "client_id": "701656412127-i3m6jtkfce0d6ath0gdgjm2hhvldngu0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFQld8Fnc67g_8yx9JtOm_yxNRBuIBz9o"
+          "current_key": "AIzaSyCoyL6oHqEBZv1NX_I9AQduMNkRE49rBkw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "552842965193-8256nfuh6jrkbk1b8in2cnqhoqg4sur6.apps.googleusercontent.com",
+              "client_id": "701656412127-i3m6jtkfce0d6ath0gdgjm2hhvldngu0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

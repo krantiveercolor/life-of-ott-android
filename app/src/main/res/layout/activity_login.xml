@@ -173,7 +173,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <ImageView
                         android:id="@+id/phoneAuthButton"
@@ -183,7 +183,7 @@
                         android:focusable="true"
                         android:src="@drawable/phone"
                         android:visibility="gone"
-                        tools:visibility="visible" />
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/facebookAuthButton"
@@ -193,8 +193,9 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:src="@drawable/facebook"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
+                        android:visibility="visible"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/app_name" />
 
                     <ImageView
                         android:id="@+id/googleAuthButton"
@@ -204,8 +205,9 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:src="@drawable/google"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
+                        android:visibility="visible"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/app_name" />
 
                 </LinearLayout>
 

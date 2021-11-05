@@ -41,7 +41,6 @@ public class ItemMovieActivity extends AppCompatActivity {
     public static final String INTENT_TYPE_GENRE = "genre";
     public static final String INTENT_TYPE_COUNTRY = "star";
 
-
     private ShimmerFrameLayout shimmerFrameLayout;
     private RecyclerView recyclerView;
     private CommonGridAdapter mAdapter;

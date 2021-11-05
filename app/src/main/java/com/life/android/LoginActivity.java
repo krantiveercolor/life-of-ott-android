@@ -11,8 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +30,9 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +47,8 @@ import com.life.android.utils.Constants;
 import com.life.android.utils.RtlUtils;
 import com.life.android.utils.ToastMsg;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -315,7 +323,6 @@ public class LoginActivity extends AppCompatActivity {
                 //send data to server
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 sendFacebookDataToServer(user.getDisplayName(), String.valueOf(user.getPhotoUrl()), user.getEmail());
-
             }
 
         } else {
@@ -360,13 +367,12 @@ public class LoginActivity extends AppCompatActivity {
                     new AuthUI.IdpConfig.GoogleBuilder().build());*/
 
             // Create and launch sign-in intent
-            startActivityForResult(
-                    AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .setAvailableProviders(providers)
-                            .setIsSmartLockEnabled(false)
-                            .build(),
-                    RC_GOOGLE_SIGN_IN);
+
+            startActivityForResult(AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setAvailableProviders(providers)
+                    .setIsSmartLockEnabled(false)
+                    .build(), RC_GOOGLE_SIGN_IN);
         }
     }
 
@@ -464,7 +470,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
                     if (response.body().getStatus().equals("success")) {
-
                         User user = response.body();
                         DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                         db.deleteUserData();
@@ -490,9 +495,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_PHONE_SIGN_IN) {
-
             final IdpResponse response = IdpResponse.fromResultIntent(data);
-
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -587,6 +590,5 @@ public class LoginActivity extends AppCompatActivity {
         finish();
         overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit);
     }
-
 
 }

@@ -1,15 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-cast:11.4.2@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3fe61cfdbad7f7e18e07f626da7e31fb/transformed/jetified-play-services-cast-11.4.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3fe61cfdbad7f7e18e07f626da7e31fb/transformed/jetified-play-services-cast-11.4.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3fe61cfdbad7f7e18e07f626da7e31fb/transformed/jetified-play-services-cast-11.4.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9bdc849df76e69cf79579d59d4557b2b/transformed/jetified-play-services-cast-11.4.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9bdc849df76e69cf79579d59d4557b2b/transformed/jetified-play-services-cast-11.4.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9bdc849df76e69cf79579d59d4557b2b/transformed/jetified-play-services-cast-11.4.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c792bf8de1b88aeeca0ac2ce4c3d5477/transformed/jetified-play-services-cast-11.4.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c792bf8de1b88aeeca0ac2ce4c3d5477/transformed/jetified-play-services-cast-11.4.2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c792bf8de1b88aeeca0ac2ce4c3d5477/transformed/jetified-play-services-cast-11.4.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/920afaa164a9fb8ae3cd59e6aefcd7f3/transformed/jetified-play-services-cast-11.4.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/920afaa164a9fb8ae3cd59e6aefcd7f3/transformed/jetified-play-services-cast-11.4.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/920afaa164a9fb8ae3cd59e6aefcd7f3/transformed/jetified-play-services-cast-11.4.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

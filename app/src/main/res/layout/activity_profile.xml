@@ -306,7 +306,7 @@
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp"
                     android:text="Set Password"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
                     android:visibility="gone"
                     app:cornerRadius="@dimen/_18sdp"
@@ -323,7 +323,7 @@
                     android:paddingBottom="@dimen/_10sdp"
                     android:text="@string/save"
                     android:textAllCaps="true"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
                     app:cornerRadius="@dimen/_18sdp"
                     tools:visibility="visible" />
