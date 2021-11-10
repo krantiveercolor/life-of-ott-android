@@ -54,7 +54,7 @@
                     <FrameLayout
                         android:id="@+id/slider_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_400sdp">
+                        android:layout_height="@dimen/_350sdp">
 
                         <com.github.islamkhsh.CardSliderViewPager
                             android:id="@+id/c_viewPager"

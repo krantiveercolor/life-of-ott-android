@@ -30,6 +30,7 @@
             app:menu="@menu/menu_bottom_navigation"
             app:passive_color="@color/white"
             app:pressed_color="@color/white" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView

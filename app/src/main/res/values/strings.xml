@@ -65,7 +65,7 @@
         <item>Pay &amp; Watch</item>
         <item>Genre</item>
         <item>Profile</item>
-        <item>Wallet</item>
+        <!--<item>Wallet</item>-->
         <item>Favourites</item>
         <item>My Subscriptions</item>
         <!--<item>Downloads</item>-->
@@ -81,7 +81,7 @@
         <item>ic_bottom_web_series</item>
         <item>ic_menu_genre</item>
         <item>outline_person_24</item>
-        <item>ic_wallet_menu</item>
+        <!--<item>ic_wallet_menu</item>-->
         <item>ic_bottom_fav</item>
         <item>ic_menu_tag</item>
         <!-- <item>ic_file_download_black_24dp</item>-->
@@ -421,5 +421,14 @@
     <string name="pay_and_watch">Pay &amp; Watch</string>
     <string name="free">Free</string>
     <string name="signup_description">Enter information below or login with social account to get started</string>
+    <string name="title_activity_sslpay">SSLPayActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

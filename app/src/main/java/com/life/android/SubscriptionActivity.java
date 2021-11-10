@@ -28,6 +28,7 @@ import com.life.android.adapters.InactiveSubscriptionAdapter;
 import com.life.android.database.DatabaseHelper;
 import com.life.android.network.RetrofitClient;
 import com.life.android.network.apis.SubscriptionApi;
+import com.life.android.network.model.ActiveStatus;
 import com.life.android.network.model.ActiveSubscription;
 import com.life.android.network.model.SubscriptionHistory;
 import com.life.android.network.model.User;
@@ -141,14 +142,15 @@ public class SubscriptionActivity extends AppCompatActivity implements ActiveSub
 
     private void addSubscriptionDataToView() {
         DatabaseHelper db = new DatabaseHelper(SubscriptionActivity.this);
-        if (activeSubscriptionList.size() > 0 && db.getUserDataCount() > 0) {
-            int index = activeSubscriptionList.size() - 1;
+        if (db.getActiveStatusCount() > 0 && db.getUserDataCount() > 0) {
             activePlanLayout.setVisibility(View.VISIBLE);
+            ActiveStatus activeStatus = db.getActiveStatusData();
             User user = db.getUserData();
             activeUserName.setText(user.getName());
             activeEmail.setText(user.getEmail());
-            activeActivePlan.setText(activeSubscriptionList.get(0).getPlanTitle());
-            activeExpireDate.setText(activeSubscriptionList.get(index).getExpireDate());
+            activeActivePlan.setText(activeStatus.getPackageTitle());
+            activeExpireDate.setText(activeStatus.getExpireDate());
+
         } else {
             activePlanLayout.setVisibility(View.GONE);
         }

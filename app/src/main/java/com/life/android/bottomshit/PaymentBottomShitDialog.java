@@ -87,8 +87,8 @@ public class PaymentBottomShitDialog extends BottomSheetDialogFragment {
         }
 
         if (enableWallet) {
-            walletBtn.setVisibility(View.VISIBLE);
-            selectWalletLayout.setVisibility(View.VISIBLE);
+            walletBtn.setVisibility(View.GONE);
+            selectWalletLayout.setVisibility(View.GONE);
         }
 
         paypalBt.setOnClickListener(view1 -> bottomShitClickListener.onBottomShitClick(PAYPAL));

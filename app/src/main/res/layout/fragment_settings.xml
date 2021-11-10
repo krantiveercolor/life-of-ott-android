@@ -62,7 +62,8 @@
             android:textSize="18sp"
             app:drawableTint="@color/white"
             app:drawableStartCompat="@drawable/ic_padlock"
-            tools:ignore="UnusedAttribute" />
+            tools:ignore="UnusedAttribute"
+            android:visibility="gone"/>
 
 
         <TextView

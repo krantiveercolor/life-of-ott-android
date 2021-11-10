@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.life.android.utils.MyAppClass"
+        android:name=".utils.MyAppClass"
         android:allowBackup="true"
         android:fullBackupContent="@xml/my_backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +30,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-
+        <activity
+            android:name=".SSLPayActivity"
+            android:exported="true"
+            android:label="@string/title_activity_sslpay"
+            android:theme="@style/AppThemeDark.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -43,21 +47,21 @@
         </provider>
 
         <activity
-            android:name="com.life.android.FragmentLoaderActivity"
+            android:name=".FragmentLoaderActivity"
             android:theme="@style/AppTheme.NoBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.life.android.OtpActivityNew"
+            android:name=".OtpActivityNew"
             android:theme="@style/AppTheme.NoBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity android:name="com.life.android.RazorPayActivity" />
+        <activity android:name=".RazorPayActivity" />
         <activity
-            android:name="com.life.android.SearchActivity"
+            android:name=".SearchActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.life.android.PapalPaymentActivity"
+            android:name=".PapalPaymentActivity"
             android:theme="@style/AppTheme.NoBar" />
-        <activity android:name="com.life.android.WebViewActivity" />
+        <activity android:name=".WebViewActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -94,34 +98,34 @@
             </intent-filter>
         </activity> <!-- facebook end -->
         <activity
-            android:name="com.life.android.TermsActivity"
+            android:name=".TermsActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.ReplyActivity"
+            android:name=".ReplyActivity"
             android:label="@string/title_activity_reply"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.life.android.ProfileActivity"
+            android:name=".ProfileActivity"
             android:theme="@style/AppTheme.NoBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.life.android.PassResetActivity"
+            android:name=".PassResetActivity"
             android:theme="@style/AppTheme.NoBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.life.android.SearchResultActivity"
+            android:name=".SearchResultActivity"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.SignUpActivity"
+            android:name=".SignUpActivity"
             android:theme="@style/DetailsScreenTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.life.android.LoginActivity"
+            android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.life.android.DetailsActivity"
+            android:name=".DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="true"
             android:label="@string/title_activity_details"
@@ -164,12 +168,12 @@
             </intent-filter>
         </activity> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
-            android:name="com.life.android.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/TransStatusTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.life.android.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:exported="true">
             <intent-filter>
@@ -179,37 +183,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.life.android.ItemMovieActivity"
+            android:name=".ItemMovieActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:label="@string/title_activity_item_show"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.life.android.ItemTVActivity"
+            android:name=".ItemTVActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.ItemSeriesActivity"
+            android:name=".ItemSeriesActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.SubscriptionActivity"
+            android:name=".SubscriptionActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.StripePaymentActivity"
+            android:name=".StripePaymentActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.PurchasePlanActivity"
+            android:name=".PurchasePlanActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name="com.life.android.DownloadActivity"
+            android:name=".DownloadActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.NoBar" />
-
         <activity
-            android:name="com.life.android.PlainActivity"
+            android:name=".PlainActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@style/AppTheme.Main"
             android:windowSoftInputMode="stateHidden|adjustResize" />

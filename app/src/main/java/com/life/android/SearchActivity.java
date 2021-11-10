@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.life.android.utils.Constants;
 import com.life.android.utils.NetworkInst;
@@ -68,9 +69,9 @@ public class SearchActivity extends AppCompatActivity {
             tvCategorySpinner.setBackground(getResources().getDrawable(R.drawable.edit_text_round_bg_overlay_light));
             countrySpinner.setBackground(getResources().getDrawable(R.drawable.edit_text_round_bg_overlay_light));
             //flex btn
-            //  btn_flex_1.setBackground(getResources().getDrawable(R.drawable.btn_rounded_primary_outline_flex));
-            //  btn_flex_2.setBackground(getResources().getDrawable(R.drawable.btn_rounded_primary_outline_flex));
-            //  btn_flex_3.setBackground(getResources().getDrawable(R.drawable.btn_rounded_primary_outline_flex));
+            /*btn_flex_1.setBackground(getResources().getDrawable(R.drawable.btn_rounded_primary_outline_flex));
+            btn_flex_2.setBackground(getResources().getDrawable(R.drawable.btn_rounded_primary_outline_flex));
+            btn_flex_3.setBackground(getResources().getDrawable(R.drawable.btn_rounded_primary_outline_flex));*/
         } else {
             toolbar.setBackgroundColor(getResources().getColor(R.color.black_window_light));
             //spinner
@@ -78,9 +79,10 @@ public class SearchActivity extends AppCompatActivity {
             tvCategorySpinner.setBackground(getResources().getDrawable(R.drawable.edit_text_round_bg_overlay_dark));
             countrySpinner.setBackground(getResources().getDrawable(R.drawable.edit_text_round_bg_overlay_dark));
             //flex btn
-            //  btn_flex_1.setBackground(getResources().getDrawable(R.drawable.btn_rounded_grey_outline_flex));
-            //  btn_flex_2.setBackground(getResources().getDrawable(R.drawable.btn_rounded_grey_outline_flex));
-            //  btn_flex_3.setBackground(getResources().getDrawable(R.drawable.btn_rounded_grey_outline_flex));
+
+            /*btn_flex_1.setBackground(getResources().getDrawable(R.drawable.btn_rounded_grey_outline_flex));
+            btn_flex_2.setBackground(getResources().getDrawable(R.drawable.btn_rounded_grey_outline_flex));
+            btn_flex_3.setBackground(getResources().getDrawable(R.drawable.btn_rounded_grey_outline_flex));*/
         }
 
         setSupportActionBar(toolbar);
@@ -94,7 +96,6 @@ public class SearchActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "profile_activity");
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "activity");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
 
     }
 

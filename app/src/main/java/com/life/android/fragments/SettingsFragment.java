@@ -54,8 +54,10 @@ public class SettingsFragment extends Fragment {
 
         if (PreferenceUtils.isLoggedIn(requireActivity())) {
             getProfileDetails();
+            binding.changePasswordText.setVisibility(View.VISIBLE);
         } else {
             plainActivity.activityIndicator(false);
+            binding.changePasswordText.setVisibility(View.GONE);
         }
 
         String applicationDetails = "Version details : " + BuildConfig.VERSION_NAME + "[" + BuildConfig.VERSION_CODE + "]";

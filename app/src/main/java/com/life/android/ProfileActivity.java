@@ -335,7 +335,9 @@ public class ProfileActivity extends AppCompatActivity {
                                 .into(userIv);
                         etName.setText(user.getName());
                         etEmail.setText(user.getEmail());
-                        etPhone.setText(user.getPhone());
+                        if (!user.getPhone().equalsIgnoreCase("00000000000")) {
+                            etPhone.setText(user.getPhone());
+                        }
                         if (user.getGender() != null) {
                             genderSpinner.setText(R.string.male);
                         } else {

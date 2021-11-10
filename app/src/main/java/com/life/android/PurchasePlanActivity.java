@@ -344,11 +344,16 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
             intent.putExtra("from", Constants.SUBSCRIPTION);
             startActivityForResult(intent, 1001);
         } else if (paymentMethodName.equalsIgnoreCase(PaymentBottomShitDialog.RAZOR_PAY)) {
-            Intent intent = new Intent(PurchasePlanActivity.this, RazorPayActivity.class);
+            Intent intent = new Intent(PurchasePlanActivity.this, SSLPayActivity.class);
             intent.putExtra("package", packageItem);
             intent.putExtra("currency", currency);
             intent.putExtra("from", Constants.SUBSCRIPTION);
             startActivityForResult(intent, 1001);
+            /*Intent intent = new Intent(PurchasePlanActivity.this, RazorPayActivity.class);
+            intent.putExtra("package", packageItem);
+            intent.putExtra("currency", currency);
+            intent.putExtra("from", Constants.SUBSCRIPTION);
+            startActivityForResult(intent, 1001);*/
         } else if (paymentMethodName.equalsIgnoreCase(PaymentBottomShitDialog.OFFLINE_PAY)) {
             //show an alert dialog
             showOfflinePaymentDialog();

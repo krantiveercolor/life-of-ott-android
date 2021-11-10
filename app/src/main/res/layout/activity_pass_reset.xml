@@ -76,7 +76,7 @@
                         android:text="@string/reset"
                         android:textAllCaps="true"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                        android:textColor="@color/colorGold"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
 

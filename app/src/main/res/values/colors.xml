@@ -9,6 +9,7 @@
     <color name="colourPurple">#A52Df3</color>
     <color name="colourBlue">#00113F</color>
     <color name="colourLiteBlue">#182C61</color>
+    <color name="searchBtnColour">#00113F</color>
 
     <!--color for TextInputLayout outline color-->
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">

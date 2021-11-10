@@ -16,5 +16,6 @@
 
     <dimen name="viewpager_next_item_visible">35dp</dimen>
     <dimen name="viewpager_current_item_horizontal_margin">50dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

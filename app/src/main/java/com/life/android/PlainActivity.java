@@ -61,7 +61,7 @@ public class PlainActivity extends AppCompatActivity {
                     break;
                 }
                 case IConstants.Fragments.watchLater: {
-                    binding.tvPlainActTitle.setText(getString(R.string.pay_watch));
+                    binding.tvPlainActTitle.setText(getString(R.string.hint_watch_later));
                     MoviesFragment moviesFragment = new MoviesFragment();
                     moviesFragment.movieType = IConstants.VideoTypeMovieAPI.watchLater;
                     loadFragment(moviesFragment);

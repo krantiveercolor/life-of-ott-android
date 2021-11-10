@@ -44,6 +44,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -343,6 +344,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
     private SingleDetails singleDetails;
     private ImageView progressImgView;
     private Uri appLinkData;
+    private ImageButton exo_rew, exo_ffwd;
 
     private RelativeLayout mainContentLayout;
 
@@ -386,6 +388,11 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         CastContext castContext = CastContext.getSharedInstance(this);
         castPlayer = new CastPlayer(castContext);
         castPlayer.setSessionAvailabilityListener(this);
+
+        //Player
+        exo_ffwd.setOnClickListener(view -> player.seekTo(player.getContentPosition() + 10000));
+
+        exo_rew.setOnClickListener(view -> player.seekTo(player.getContentPosition() - 10000));
 
         // cast button will show if the cast device will be available
         if (castContext.getCastState() != CastState.NO_DEVICES_AVAILABLE)
@@ -620,6 +627,9 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         trailerImgView = findViewById(R.id.trailer_img_view);
         trailerTitleView = findViewById(R.id.trailer_title_view);
         mainContentLayout = findViewById(R.id.mainContentLayout);
+
+        exo_rew = findViewById(R.id.exo_rew);
+        exo_ffwd = findViewById(R.id.exo_ffwd);
 
         Shimmer shimmer = new Shimmer();
         shimmer.setDuration(2000);
@@ -887,7 +897,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                 }
 
                 if (listSub.size() != 0) {
-                    imgSubtitle.setVisibility(VISIBLE);
+                    imgSubtitle.setVisibility(GONE);
                 }
             } else {
                 imgBack.setVisibility(GONE);
@@ -1133,7 +1143,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             }
 
             if (listSub.size() != 0) {
-                imgSubtitle.setVisibility(VISIBLE);
+                imgSubtitle.setVisibility(GONE);
             } else {
                 imgSubtitle.setVisibility(GONE);
             }
@@ -1280,7 +1290,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                 if (obj.getSubtitleList().size() != 0) {
                     listSub.clear();
                     listSub.addAll(obj.getSubtitleList());
-                    imgSubtitle.setVisibility(VISIBLE);
+                    imgSubtitle.setVisibility(GONE);
                 } else {
                     listSub.clear();
                     imgSubtitle.setVisibility(GONE);
@@ -1970,7 +1980,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                         new ToastMsg(DetailsActivity.this).toastIconSuccess(response.body().getMessage());
                         if (type.equals(Constants.WishListType.watch_later)) {
                             isWatchLater = true;
-                            imgWatchList.setColorFilter(ContextCompat.getColor(DetailsActivity.this, R.color.colorGold), android.graphics.PorterDuff.Mode.SRC_IN);
+                            imgWatchList.setColorFilter(ContextCompat.getColor(DetailsActivity.this, R.color.paypalColor), android.graphics.PorterDuff.Mode.SRC_IN);
                         } else {
                             isFav = true;
                             imgAddFav.setImageResource(R.drawable.ic_circle_fav);
@@ -1990,7 +2000,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
             }
         });
-
     }
 
     private void paidControl(String isPaid, boolean isPayAndWatch) {

@@ -22,6 +22,7 @@
             android:hint="@string/name"
             android:imeOptions="actionNext"
             android:inputType="textCapWords"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:maxLines="1"
             android:padding="15dp"
             android:singleLine="true"

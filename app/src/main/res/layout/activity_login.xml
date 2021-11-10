@@ -191,11 +191,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_middle"
                         android:clickable="true"
+                        android:contentDescription="@string/app_name"
                         android:focusable="true"
                         android:src="@drawable/facebook"
                         android:visibility="visible"
-                        tools:visibility="visible"
-                        android:contentDescription="@string/app_name" />
+                        tools:visibility="visible" />
 
                     <ImageView
                         android:id="@+id/googleAuthButton"
@@ -203,11 +203,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_middle"
                         android:clickable="true"
+                        android:contentDescription="@string/app_name"
                         android:focusable="true"
                         android:src="@drawable/google"
                         android:visibility="visible"
-                        tools:visibility="visible"
-                        android:contentDescription="@string/app_name" />
+                        tools:visibility="visible" />
 
                 </LinearLayout>
 
