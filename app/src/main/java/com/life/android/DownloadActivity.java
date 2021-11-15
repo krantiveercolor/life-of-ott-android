@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DownloadActivity extends AppCompatActivity implements  DownloadHistoryAdapter.OnDeleteDownloadFileListener {
+public class DownloadActivity extends AppCompatActivity implements DownloadHistoryAdapter.OnDeleteDownloadFileListener {
     public static DownloadActivity instance;
     public static final String ACTION_PLAY_VIDEO = "play_video";
     public static final String TAG = "DownloadActivity";
@@ -117,7 +117,7 @@ public class DownloadActivity extends AppCompatActivity implements  DownloadHist
         viewModel.getAllDownloads().observe(this, new Observer<List<DownloadInfo>>() {
             @Override
             public void onChanged(List<DownloadInfo> list) {
-                if (list != null && list.size() > 0){
+                if (list != null && list.size() > 0) {
                     //update downloading adapter
                     coordinatorLayout.setVisibility(View.GONE);
                     downloadingRv.setVisibility(View.VISIBLE);
@@ -125,7 +125,7 @@ public class DownloadActivity extends AppCompatActivity implements  DownloadHist
                     downloadingFileList.clear();
                     downloadingFileList.addAll(list);
                     downloadingAdapter.notifyDataSetChanged();
-                }else {
+                } else {
                     downloadingRv.setVisibility(View.GONE);
                     downloadingFileTv.setVisibility(View.GONE);
                     coordinatorLayout.setVisibility(View.VISIBLE);
@@ -176,7 +176,7 @@ public class DownloadActivity extends AppCompatActivity implements  DownloadHist
                 downloadedFileTV.setVisibility(View.GONE);
                 coordinatorLayout.setVisibility(View.VISIBLE);
             }
-        }else {
+        } else {
             downloadedFileTV.setVisibility(View.GONE);
             downloadingRv.setVisibility(View.GONE);
             downloadedFileTV.setVisibility(View.GONE);

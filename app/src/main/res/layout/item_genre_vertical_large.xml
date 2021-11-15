@@ -36,7 +36,7 @@
                 android:gravity="center"
                 android:minWidth="0dp"
                 android:text="@string/see_more"
-                android:textColor="@color/colorGold"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 

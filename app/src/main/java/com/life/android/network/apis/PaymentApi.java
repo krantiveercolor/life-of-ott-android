@@ -1,6 +1,7 @@
 package com.life.android.network.apis;
 
 
+import com.life.android.models.TransactionIdModel;
 import com.life.android.network.model.APIResponse;
 import com.life.android.network.model.CreatePaymentModel;
 import com.life.android.network.model.WalletHistoryResponseModel;
@@ -46,4 +47,14 @@ public interface PaymentApi {
     @POST("create_payment_request")
     Call<APIResponse<CreatePaymentModel>> createPaymentRequest(@Header("API-KEY") String apiKey,
                                                                @FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("initiate_ssl_commerz")
+    Call<TransactionIdModel> getTransId(@Header("API-KEY") String apiKey,
+                                        @FieldMap HashMap<String, String> map);
+
+    @FormUrlEncoded
+    @POST("payment_success")
+    Call<ResponseBody> paySuccess(@Header("API-KEY") String apiKey,
+                                  @FieldMap HashMap<String, String> map);
 }

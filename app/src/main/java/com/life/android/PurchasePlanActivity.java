@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.life.android.adapters.PackageAdapter;
 import com.life.android.bottomshit.PaymentBottomShitDialog;
 import com.life.android.database.DatabaseHelper;
+import com.life.android.models.TransactionIdModel;
 import com.life.android.network.RetrofitClient;
 import com.life.android.network.apis.PackageApi;
 import com.life.android.network.apis.PaymentApi;
@@ -44,6 +46,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,7 +70,7 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
     private List<Package> packages = new ArrayList<>();
     private List<ImageView> imageViews = new ArrayList<>();
     private String currency = "";
-    private String exchangeRate;
+    private String exchangeRate, payTransId = "";
     private boolean isDark;
 
     private static PayPalConfiguration config = new PayPalConfiguration()
@@ -344,11 +347,12 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
             intent.putExtra("from", Constants.SUBSCRIPTION);
             startActivityForResult(intent, 1001);
         } else if (paymentMethodName.equalsIgnoreCase(PaymentBottomShitDialog.RAZOR_PAY)) {
-            Intent intent = new Intent(PurchasePlanActivity.this, SSLPayActivity.class);
+            paymentTransactionIdApiCall();
+            /*Intent intent = new Intent(PurchasePlanActivity.this, SSLPayActivity.class);
             intent.putExtra("package", packageItem);
             intent.putExtra("currency", currency);
             intent.putExtra("from", Constants.SUBSCRIPTION);
-            startActivityForResult(intent, 1001);
+            startActivityForResult(intent, 1001);*/
             /*Intent intent = new Intent(PurchasePlanActivity.this, RazorPayActivity.class);
             intent.putExtra("package", packageItem);
             intent.putExtra("currency", currency);
@@ -365,6 +369,41 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
             } else
                 new ToastMsg(this).toastIconError("Your wallet amount " + currency + walletAmount + " was less than plan price");
         }
+    }
+
+    private void paymentTransactionIdApiCall() {
+        progressBar.setVisibility(View.VISIBLE);
+        Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
+        PaymentApi paymentApi = retrofit.create(PaymentApi.class);
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("user_id", PreferenceUtils.getUserId(this));
+        hashMap.put("plan_id", packageItem.getPlanId());
+        hashMap.put("amount", packageItem.getPrice());
+        hashMap.put("payment_status", packageItem.getStatus());
+        hashMap.put("currency", "USD");
+        Call<TransactionIdModel> call = paymentApi.getTransId(AppConfig.API_KEY, hashMap);
+        call.enqueue(new Callback<TransactionIdModel>() {
+            @Override
+            public void onResponse(Call<TransactionIdModel> call, Response<TransactionIdModel> response) {
+                if (response.code() == 200 && response.body() != null) {
+                    paymentScreen(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TransactionIdModel> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    private void paymentScreen(TransactionIdModel body) {
+        Intent intent = new Intent(PurchasePlanActivity.this, SSLPayActivity.class);
+        intent.putExtra("package", packageItem);
+        intent.putExtra("currency", currency);
+        intent.putExtra("from", Constants.SUBSCRIPTION);
+        intent.putExtra("transId", body.getTransaction_id());
+        startActivityForResult(intent, 1001);
     }
 
     private void showOfflinePaymentDialog() {

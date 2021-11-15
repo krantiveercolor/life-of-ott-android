@@ -28,8 +28,7 @@
             app:item_text_size="11sp"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:menu="@menu/menu_bottom_navigation"
-            app:passive_color="@color/white"
-            app:pressed_color="@color/white" />
+            app:passive_color="@color/white"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

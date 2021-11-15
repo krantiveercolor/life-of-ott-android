@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,12 +22,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.life.android.AppConfig;
 import com.life.android.FragmentLoaderActivity;
+import com.life.android.PlainActivity;
+import com.life.android.PurchasePlanActivity;
 import com.life.android.R;
 import com.life.android.RazorPayActivity;
+import com.life.android.SSLPayActivity;
 import com.life.android.StripePaymentActivity;
 import com.life.android.adapters.TicketInfoAdapter;
 import com.life.android.bottomshit.PaymentBottomShitDialog;
 import com.life.android.database.DatabaseHelper;
+import com.life.android.helper.IConstants;
+import com.life.android.models.TransactionIdModel;
 import com.life.android.models.single_details.SingleDetails;
 import com.life.android.network.RetrofitClient;
 import com.life.android.network.apis.PaymentApi;
@@ -68,6 +74,7 @@ import static android.app.Activity.RESULT_OK;
 public class TicketFragment extends Fragment implements PaymentBottomShitDialog.OnBottomShitClickListener {
 
     private String type = "";
+
 
     public TicketFragment() {
         // Required empty public constructor
@@ -111,6 +118,7 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
     private SingleDetails singleDetails;
     private TextView ticketPriceView, gstPriceView, gstPercentageView, totalPriceView, payWatchDescView;
     private ProgressDialog dialog;
+    private ProgressBar progress;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -138,8 +146,9 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
         });
 
         view.findViewById(R.id.terms_and_conditions_view).setOnClickListener(v -> {
-            startActivity(new Intent(requireContext(), FragmentLoaderActivity.class)
-                    .putExtra("from", Constants.PAY_WATCH_TERMS_FRAGMENT));
+            Intent intent = new Intent(requireActivity(), PlainActivity.class);
+            intent.putExtra(IConstants.IntentString.type, IConstants.Fragments.terms_conditions);
+            startActivity(intent);
             requireActivity().overridePendingTransition(R.anim.enter, R.anim.exit);
         });
 
@@ -166,6 +175,7 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
         gstPercentageView = view.findViewById(R.id.gst_percentage_view);
         totalPriceView = view.findViewById(R.id.total_price_view);
         termsAndConditionsCheckBox = view.findViewById(R.id.terms_and_conditions_check_box);
+        progress = view.findViewById(R.id.progress);
     }
 
     private void attachDataToView() {
@@ -195,13 +205,14 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
             intent.putExtra("preBook", singleDetails.getPreBookingEnabled());
             startActivityForResult(intent, 1001);
         } else if (paymentMethodName.equalsIgnoreCase(PaymentBottomShitDialog.RAZOR_PAY)) {
-            Intent intent = new Intent(requireContext(), RazorPayActivity.class);
+            paymentTransactionIdApiCall();
+            /*Intent intent = new Intent(requireContext(), RazorPayActivity.class);
             intent.putExtra("package", packageItem);
             intent.putExtra("currency", currency);
             intent.putExtra("from", Constants.PAY_WATCH);
             intent.putExtra("movie_id", singleDetails.getVideosId());
             intent.putExtra("preBook", singleDetails.getPreBookingEnabled());
-            startActivityForResult(intent, 1001);
+            startActivityForResult(intent, 1001);*/
         } else if (paymentMethodName.equalsIgnoreCase(PaymentBottomShitDialog.OFFLINE_PAY)) {
             //show an alert dialog
             showOfflinePaymentDialog();
@@ -213,6 +224,43 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
             } else
                 new ToastMsg(requireContext()).toastIconError("Your wallet amount " + currency + walletAmount + " was less than plan price");
         }
+    }
+
+    private void paymentTransactionIdApiCall() {
+        progress.setVisibility(View.VISIBLE);
+        Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
+        PaymentApi paymentApi = retrofit.create(PaymentApi.class);
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("user_id", PreferenceUtils.getUserId(requireActivity()));
+        hashMap.put("plan_id", "");
+        hashMap.put("amount", packageItem.getPrice());
+        hashMap.put("payment_status", "1");
+        hashMap.put("currency", "USD");
+        Call<TransactionIdModel> call = paymentApi.getTransId(AppConfig.API_KEY, hashMap);
+        call.enqueue(new Callback<TransactionIdModel>() {
+            @Override
+            public void onResponse(Call<TransactionIdModel> call, Response<TransactionIdModel> response) {
+                progress.setVisibility(View.GONE);
+                if (response.code() == 200 && response.body() != null) {
+                    paymentScreen(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TransactionIdModel> call, Throwable t) {
+                progress.setVisibility(View.GONE);
+                t.printStackTrace();
+            }
+        });
+    }
+
+    private void paymentScreen(TransactionIdModel body) {
+        Intent intent = new Intent(requireActivity(), SSLPayActivity.class);
+        intent.putExtra("package", packageItem);
+        intent.putExtra("currency", currency);
+        intent.putExtra("from", Constants.PAY_WATCH);
+        intent.putExtra("transId", body.getTransaction_id());
+        startActivityForResult(intent, 1001);
     }
 
     private void processPaypalPayment() {
