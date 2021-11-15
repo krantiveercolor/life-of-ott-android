@@ -17,8 +17,8 @@
 
     <item
         android:id="@+id/bottom_home"
-        android:icon="@drawable/home"
-        android:title="" />
+        android:icon="@drawable/home_life"
+        android:title="@string/home" />
 
     <item
         android:id="@+id/bottom_series"

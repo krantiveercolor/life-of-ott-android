@@ -54,7 +54,7 @@ public class PlainActivity extends AppCompatActivity {
                     break;
                 }
                 case IConstants.Fragments.favorite: {
-                    binding.tvPlainActTitle.setText(getString(R.string.pay_watch));
+                    binding.tvPlainActTitle.setText(getString(R.string.favorite));
                     MoviesFragment moviesFragment = new MoviesFragment();
                     moviesFragment.movieType = IConstants.VideoTypeMovieAPI.favorite;
                     loadFragment(moviesFragment);

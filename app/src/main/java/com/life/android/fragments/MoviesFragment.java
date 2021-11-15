@@ -19,7 +19,9 @@ import com.life.android.helper.PaginationScrollListener;
 import com.life.android.models.CommonModels;
 import com.life.android.models.home_content.Video;
 import com.life.android.network.RetrofitClient;
+import com.life.android.network.apis.FavouriteApi;
 import com.life.android.network.apis.MovieApi;
+import com.life.android.utils.PreferenceUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -59,10 +61,17 @@ public class MoviesFragment extends Fragment {
             if (plainActivity != null) {
                 plainActivity.activityIndicator(true);
             }
-            getMovieList();
-
+            if (movieType.equals("fav") || movieType.equals("watch_later")) {
+                getFavList();
+            } else {
+                getMovieList();
+            }
             binding.swipeRefreshLayout.setOnRefreshListener(() -> {
                 if (!isLoading) {
+                    if (movieType.equals("watch_later") || movieType.equals("fav")) {
+                        binding.swipeRefreshLayout.setEnabled(false);
+                        return;
+                    }
                     dataList.clear();
                     loadedAllData = false;
                     currentPage = 1;
@@ -71,6 +80,83 @@ public class MoviesFragment extends Fragment {
             });
         }
     }
+
+    private void getFavList() {
+        isLoading = true;
+        Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
+        FavouriteApi api = retrofit.create(FavouriteApi.class);
+        Call<List<Video>> call = api.getFavoriteList(AppConfig.API_KEY, PreferenceUtils.getUserId(getContext()), 1, movieType);
+        call.enqueue(new Callback<List<Video>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<Video>> call, @NotNull retrofit2.Response<List<Video>> response) {
+                if (response.code() == 200 && response.body() != null) {
+                    Log.d(TAG, "onResponse: " + response.body());
+                    isLoading = false;
+
+
+                    if (plainActivity != null && !plainActivity.isFinishing()) {
+                        plainActivity.activityIndicator(false);
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        binding.footerProgressBar.setVisibility(View.GONE);
+                        if ((response.body().isEmpty() || String.valueOf(response).length() < 10) && currentPage == 1) {
+                            binding.errorLayout.setVisibility(View.VISIBLE);
+                        } else {
+                            binding.errorLayout.setVisibility(View.GONE);
+                        }
+                        if (response.body().isEmpty()) {
+                            loadedAllData = true;
+                        } else {
+                            for (int i = 0; i < response.body().size(); i++) {
+                                Video video = response.body().get(i);
+                                CommonModels models = new CommonModels();
+                                models.setImageUrl(video.getThumbnailUrl());
+                                models.setTitle(video.getTitle());
+                                models.setQuality(video.getVideoQuality());
+                                models.setIsPaid(video.getIsPaid());
+                                models.setVideoType("movie");
+                                models.setReleaseDate(video.getRelease());
+                                models.setVideo_view_type(video.getVideo_view_type());
+                                if (video.getIsTvseries().equals("1")) {
+                                    models.setVideoType("tvseries");
+                                } else {
+                                    models.setVideoType("movie");
+                                }
+                                models.setId(video.getVideosId());
+                                dataList.add(models);
+                            }
+                            configureRecyclerViewData(response.body().size());
+                        }
+                    }
+                } else {
+                    loadedAllData = true;
+                    isLoading = false;
+                    if (plainActivity != null && !plainActivity.isFinishing()) {
+                        plainActivity.activityIndicator(false);
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        binding.footerProgressBar.setVisibility(View.GONE);
+                        if (currentPage == 1) {
+                            binding.errorLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
+                loadedAllData = true;
+                isLoading = false;
+                if (plainActivity != null && !plainActivity.isFinishing()) {
+                    plainActivity.activityIndicator(false);
+                    binding.swipeRefreshLayout.setRefreshing(false);
+                    if (currentPage == 1) {
+                        binding.errorLayout.setVisibility(View.VISIBLE);
+                    }
+                }
+
+            }
+        });
+    }
+
 
     private void getMovieList() {
         isLoading = true;
@@ -168,7 +254,13 @@ public class MoviesFragment extends Fragment {
                             if (!loadedAllData && !isLoading) {
                                 currentPage = currentPage + 1;
                                 binding.footerProgressBar.setVisibility(View.VISIBLE);
-                                getMovieList();
+                                if (movieType.equals("fav") || movieType.equals("watch_later")) {
+                                    binding.footerProgressBar.setVisibility(View.GONE);
+                                    if (currentPage == 1)
+                                        getFavList();
+                                } else {
+                                    getMovieList();
+                                }
                             }
                         }
                     });

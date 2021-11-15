@@ -16,7 +16,7 @@
         android:paddingTop="@dimen/_8sdp"
         android:paddingEnd="@dimen/_10sdp"
         android:paddingBottom="@dimen/_8sdp"
-        android:textColor="@color/colorGold"
+        android:textColor="@color/white"
         android:textSize="@dimen/_10ssp"
         tools:text="Erotic" />
 

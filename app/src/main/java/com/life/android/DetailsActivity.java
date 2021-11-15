@@ -2402,7 +2402,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
     }
 
     private void setGenreText() {
-
         rvSmallGenre.setAdapter(new SmallGenreAdapter(singleDetails.getGenre()));
     }
 
@@ -2485,7 +2484,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                         payAndWatchBtn.setVisibility(VISIBLE);
                         watchNowBt.setVisibility(GONE);
                         if (singleDetails.getIs_subscribed_previously().equalsIgnoreCase("1")) {
-                            payAndWatchBtn.setText(String.format("Pay Again and watch for ₹%s", singleDetails.getPrice()));
+                            payAndWatchBtn.setText(String.format("Pay Again and watch for ৳%s", singleDetails.getPrice()));
                             if (singleDetails.getIs_rent_expired().equalsIgnoreCase("0")) {
                                 payAndWatchBtn.setVisibility(GONE);
                                 watchNowBt.setVisibility(VISIBLE);
@@ -2498,7 +2497,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                                 payWatchExpireStatusView.setText(getString(R.string.subscription_expired));
                             }
                         } else {
-                            payAndWatchBtn.setText(String.format("Pay and watch for ₹%s", singleDetails.getPrice()));
+                            payAndWatchBtn.setText(String.format("Pay and watch for ৳%s", singleDetails.getPrice()));
                         }
                     } else {
                         watchNowBt.setVisibility(VISIBLE);

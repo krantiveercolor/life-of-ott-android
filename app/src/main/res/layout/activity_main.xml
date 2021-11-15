@@ -23,12 +23,15 @@
             android:layout_gravity="bottom"
             android:background="@drawable/curved_top_black"
             android:orientation="horizontal"
+            android:visibility="visible"
+            app:active_color="@color/white"
             app:animation_duration="300"
             app:item_padding="4dp"
             app:item_text_size="11sp"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:menu="@menu/menu_bottom_navigation"
-            app:passive_color="@color/white"/>
+            app:passive_color="@color/white"
+            app:pressed_color="@color/colorButtonSelectedTV" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

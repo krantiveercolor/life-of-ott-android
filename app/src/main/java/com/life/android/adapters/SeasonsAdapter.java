@@ -73,10 +73,10 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonsV
         public void bindData(String seasonName, int position) {
             itemAddCashTextView.setText(seasonName);
             if (position == selectedPos) {
-                itemAddCashTextView.setTextColor(ContextCompat.getColor(context, R.color.colorGold));
+                itemAddCashTextView.setTextColor(ContextCompat.getColor(context, R.color.grey_60));
                 rootLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.curved_gold_stroke_bg));
             } else {
-                itemAddCashTextView.setTextColor(ContextCompat.getColor(context, R.color.grey_40));
+                itemAddCashTextView.setTextColor(ContextCompat.getColor(context, R.color.white));
                 rootLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.curved_gold_stroke_grey_bg));
             }
         }
