@@ -33,6 +33,10 @@ public class Constants {
     public static List<Country> countryList = null;
     public static List<TvCategory> tvCategoryList = null;
 
+    //country
+    public static final String BANGLA = "bangladesh";
+    public static final String OTHER_COUNTRY = "other_country";
+
     //room related constants
 
     public static final String CONTENT_ID = "content_id";

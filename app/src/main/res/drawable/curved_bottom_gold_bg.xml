@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/colorGold" />
+    <solid android:color="@color/colorButtonSelectedTV" />
     <corners
         android:bottomLeftRadius="@dimen/_10sdp"
         android:bottomRightRadius="@dimen/_15sdp"

@@ -28,19 +28,4 @@
         android:visibility="gone"
         tools:text="SomeText" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/tv"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginEnd="9sp"
-            android:layout_marginBottom="5sp"
-            android:src="@drawable/play"
-            android:visibility="gone" />
-    </FrameLayout>
-
 </RelativeLayout>

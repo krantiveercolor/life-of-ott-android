@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:background="@color/colorGold"
+            android:background="@color/colorButtonSelectedTV"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="@dimen/_25sdp"

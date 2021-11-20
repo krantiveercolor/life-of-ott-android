@@ -224,7 +224,7 @@
                     app:data_type="_long"
                     app:left_thumb_color="@color/colourPurple"
                     app:left_thumb_color_pressed="@color/white"
-                    app:right_thumb_color="@color/colorGoldLight"
+                    app:right_thumb_color="@color/colourPurple"
                     app:right_thumb_color_pressed="@color/white" />
 
                 <LinearLayout

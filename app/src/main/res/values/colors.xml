@@ -11,6 +11,8 @@
     <color name="colourLiteBlue">#182C61</color>
     <color name="searchBtnColour">#00113F</color>
 
+    <color name="detailsDialogServer">#FFFFFF</color>
+
     <!--color for TextInputLayout outline color-->
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">
         @color/colorPrimary
@@ -22,6 +24,7 @@
     <color name="colorButtonFocusedTV">#5C6BC0</color>
     <color name="colorButtonPressedTV">#C70039</color>
     <color name="colorButtonSelectedTV">#78909C</color>
+    <color name="colorButtonSelected">#9EBBCA</color>
 
     <color name="paypalColor">#ffc43a</color>
     <color name="paypalColorDark">#D39916</color>

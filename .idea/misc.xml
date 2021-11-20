@@ -65,13 +65,15 @@
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/btn_rounded_grey_outline_flex.xml" value="0.19722222222222222" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/comment_et_border.xml" value="0.18981481481481483" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/cursor_drawable.xml" value="0.19722222222222222" />
+        <entry key="..\:/life-of-ott/app/src/main/res/drawable/curved_bottom_gold_bg.xml" value="0.15208333333333332" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/edit_text_round_bg_overlay_dark.xml" value="0.19722222222222222" />
+        <entry key="..\:/life-of-ott/app/src/main/res/drawable/gender_spinner_background.xml" value="0.15208333333333332" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/ic_bottom_livetv.xml" value="0.19907407407407407" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/ic_bottom_movie.xml" value="0.19907407407407407" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/ic_hamburger_icon.xml" value="0.1962962962962963" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_details.xml" value="0.15462962962962962" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_download.xml" value="0.1921875" />
-        <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_pass_reset.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_plain.xml" value="0.1921875" />
@@ -83,28 +85,37 @@
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_sslpay2.xml" value="0.2" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_subscription.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/card_comment.xml" value="0.1921875" />
-        <entry key="..\:/life-of-ott/app/src/main/res/layout/card_home_view.xml" value="0.22" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/card_home_view.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/card_home_zoom_view.xml" value="0.1921875" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/card_server.xml" value="0.1921875" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/card_server_two.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/content_details.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/content_reply.xml" value="0.15" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/content_sslpay2.xml" value="0.1921875" />
-        <entry key="..\:/life-of-ott/app/src/main/res/layout/custom_exo_layout.xml" value="0.1921875" />
-        <entry key="..\:/life-of-ott/app/src/main/res/layout/dialog_term_of_services.xml" value="0.1921875" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/custom_exo_layout.xml" value="0.16" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/dialog_country.xml" value="0.1921875" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/dialog_term_of_services.xml" value="0.15" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/fragment_contact_us.xml" value="0.15648148148148147" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/fragment_home.xml" value="0.15" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/fragment_movies.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/fragment_settings.xml" value="0.1921875" />
-        <entry key="..\:/life-of-ott/app/src/main/res/layout/fragment_ticket.xml" value="0.16" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/fragment_ticket.xml" value="0.2" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/item_genre_vertical_large.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/item_genre_vertical_small.xml" value="0.1921875" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/item_grid_image_albums.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/item_horizontal_large.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/item_movie.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/item_season.xml" value="0.22" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/layout_download_item.xml" value="0.1921875" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/layout_download_item_vertical.xml" value="0.25" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/layout_package_item_2.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/layout_payment_bottom_shit.xml" value="0.2" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/layout_server_dialog.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/password_entry_layout.xml" value="0.25" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/slider_item.xml" value="0.15" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/ssl_layout.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/toolbar.xml" value="0.2" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/track_selection_dialog.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.17" />
         <entry key="..\:/life-of-ott/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19722222222222222" />
       </map>

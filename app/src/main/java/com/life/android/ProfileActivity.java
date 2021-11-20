@@ -335,7 +335,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 .into(userIv);
                         etName.setText(user.getName());
                         etEmail.setText(user.getEmail());
-                        if (!user.getPhone().equalsIgnoreCase("00000000000")) {
+                        if (user.getPhone() != null && !user.getPhone().equalsIgnoreCase("00000000000")) {
                             etPhone.setText(user.getPhone());
                         }
                         if (user.getGender() != null) {

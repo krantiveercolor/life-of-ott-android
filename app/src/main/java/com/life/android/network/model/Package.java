@@ -26,6 +26,14 @@ public class Package implements Serializable {
     @Expose
     private String status;
 
+    @SerializedName("usd_price")
+    @Expose
+    private String usdPrice;
+
+    @SerializedName("gst_amount_in_usd")
+    @Expose
+    private String gstAmountInUsd = null;
+
     public String getPlanId() {
         return planId;
     }
@@ -74,6 +82,22 @@ public class Package implements Serializable {
         this.status = status;
     }
 
+    public String getUsdPrice() {
+        return usdPrice;
+    }
+
+    public void setUsdPrice(String usdPrice) {
+        this.usdPrice = usdPrice;
+    }
+
+    public String getGstAmountInUsd() {
+        return gstAmountInUsd;
+    }
+
+    public void setGstAmountInUsd(String gstAmountInUsd) {
+        this.gstAmountInUsd = gstAmountInUsd;
+    }
+
     @Override
     public String toString() {
         return "Package{" +
@@ -83,6 +107,8 @@ public class Package implements Serializable {
                 ", screens='" + screens + '\'' +
                 ", price='" + price + '\'' +
                 ", status='" + status + '\'' +
+                ", usdPrice='" + usdPrice + '\'' +
+                ", gstAmountInUsd='" + gstAmountInUsd + '\'' +
                 '}';
     }
 }

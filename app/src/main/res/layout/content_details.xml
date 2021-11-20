@@ -494,7 +494,7 @@
                                         android:layout_marginStart="@dimen/_15sdp"
                                         android:layout_marginTop="10dp"
                                         android:background="@drawable/gender_spinner_background"
-                                        android:backgroundTint="@color/colorGold"
+                                        android:backgroundTint="@color/colorButtonSelected"
                                         android:drawableStart="@drawable/ic_info_blue"
                                         android:drawablePadding="@dimen/_10sdp"
                                         android:drawableTint="@color/black"

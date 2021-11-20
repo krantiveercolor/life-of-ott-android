@@ -3,6 +3,7 @@ package com.life.android.fragments;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -14,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -70,6 +72,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 
 public class TicketFragment extends Fragment implements PaymentBottomShitDialog.OnBottomShitClickListener {
 
@@ -108,7 +111,7 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
     private RecyclerView ticketInfoRv;
     private ImageView posterImgView;
     private TicketInfoAdapter ticketInfoAdapter;
-    private String currency = "";
+    private String currency = "", selectedCountry = "";
     private PaymentBottomShitDialog paymentBottomShitDialog;
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
@@ -124,6 +127,9 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("push", MODE_PRIVATE);
+        selectedCountry = sharedPreferences.getString("country", "");
+
         castingViews(view);
 
         view.findViewById(R.id.have_coupon_code_view).setOnClickListener(view1 -> {
@@ -135,14 +141,19 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
                 requireActivity().onBackPressed());
 
         view.findViewById(R.id.ticket_pay_now_btn).setOnClickListener(view1 -> {
-            if (termsAndConditionsCheckBox.isChecked()) {
-                paymentBottomShitDialog = new PaymentBottomShitDialog();
-                paymentBottomShitDialog.enableWallet = true;
-                paymentBottomShitDialog.setOnBottomShitClickListener(this);
-                paymentBottomShitDialog.show(requireActivity().getSupportFragmentManager(), paymentBottomShitDialog.getTag());
+            if (singleDetails.getPriceInUsd().equals("0") || singleDetails.getPrice().equals("0")) {
+                Toast.makeText(requireActivity(), "Amount should be grater than 0", Toast.LENGTH_SHORT).show();
             } else {
-                new ToastMsg(requireContext()).toastIconError("Please read and accept the terms & conditions");
+                if (termsAndConditionsCheckBox.isChecked()) {
+                    paymentBottomShitDialog = new PaymentBottomShitDialog();
+                    paymentBottomShitDialog.enableWallet = true;
+                    paymentBottomShitDialog.setOnBottomShitClickListener(this);
+                    paymentBottomShitDialog.show(requireActivity().getSupportFragmentManager(), paymentBottomShitDialog.getTag());
+                } else {
+                    new ToastMsg(requireContext()).toastIconError("Please read and accept the terms & conditions");
+                }
             }
+
         });
 
         view.findViewById(R.id.terms_and_conditions_view).setOnClickListener(v -> {
@@ -152,13 +163,16 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
             requireActivity().overridePendingTransition(R.anim.enter, R.anim.exit);
         });
 
-        // getting currency symbol
         PaymentConfig config = new DatabaseHelper(requireContext()).getConfigurationData().getPaymentConfig();
         currency = config.getCurrencySymbol();
 
         packageItem.setName("Purchasing movie " + singleDetails.getTitle());
         packageItem.setPrice(singleDetails.getFinalPrice());
         packageItem.setPlanId(singleDetails.getVideosId());
+        packageItem.setUsdPrice(singleDetails.getPriceInUsd());
+        packageItem.setGstAmountInUsd(singleDetails.getGstAmountInUsd());
+
+
 
         attachDataToView();
 
@@ -180,10 +194,23 @@ public class TicketFragment extends Fragment implements PaymentBottomShitDialog.
 
     private void attachDataToView() {
         Glide.with(requireActivity()).load(singleDetails.getPosterUrl()).into(posterImgView);
-        ticketPriceView.setText(String.format("%s %s", currency, singleDetails.getPrice()));
-        gstPriceView.setText(String.format("%s %s", currency, singleDetails.getGstAmount()));
-        totalPriceView.setText(String.format("%s %s", currency, singleDetails.getFinalPrice()));
-        gstPercentageView.setText(String.format("%s (%s%%)", gstPercentageView.getText(), singleDetails.getGstPercentage()));
+        if (selectedCountry.equals(Constants.BANGLA)) {
+            ticketPriceView.setText(String.format("%s %s", currency, singleDetails.getPrice()));
+            gstPriceView.setText(String.format("%s %s", currency, singleDetails.getGstAmount()));
+            totalPriceView.setText(String.format("%s %s", currency, singleDetails.getFinalPrice()));
+            gstPercentageView.setText(String.format("%s (%s%%)", gstPercentageView.getText(), singleDetails.getGstPercentage()));
+
+        } else {
+            ticketPriceView.setText(String.format("$%s", singleDetails.getPriceInUsd()));
+            gstPriceView.setText(String.format("$%s", singleDetails.getGstAmountInUsd()));
+            double price = Double.parseDouble(singleDetails.getPriceInUsd());
+            double gstAmomunt = Double.parseDouble(singleDetails.getGstAmountInUsd());
+            double ttl = price + gstAmomunt;
+            //int total = (int) Math.floor(ttl);
+            totalPriceView.setText(String.format("$%s", String.valueOf(ttl)));
+            gstPercentageView.setText(String.format("%s (%s%%)", gstPercentageView.getText(), singleDetails.getGstPercentageinUsd()));
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             payWatchDescView.setText(Html.fromHtml(singleDetails.getPayWatchDescription(), Html.FROM_HTML_MODE_COMPACT));
         } else {

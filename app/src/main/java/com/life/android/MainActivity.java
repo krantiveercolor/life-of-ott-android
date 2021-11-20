@@ -1,6 +1,7 @@
 package com.life.android;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean status = false;
     private FirebaseAnalytics mFirebaseAnalytics;
     public boolean isDark;
-    private String navMenuStyle;
+    private String navMenuStyle, countrySelected = "";
 
     private final int PERMISSION_REQUEST_CODE = 100;
     private String searchType;
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public BottomifyNavigationView bottomifyNavigationView;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         RtlUtils.setScreenDirection(this);
@@ -134,6 +137,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (sharedPreferences.getBoolean("firstTime", true)) {
             showTermServicesDialog();
+        } else if (sharedPreferences.getString("country", "").equals("")) {
+            if (!PreferenceUtils.isLoggedIn(MainActivity.this)) {
+                openSelectCountryDialog();
+            }
+            openSelectCountryDialog();
         }
 
         //update subscription
@@ -532,11 +540,66 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             editor.putBoolean("firstTime", false);
             editor.apply();
             dialog.dismiss();
+            openSelectCountryDialog();
         });
 
         declineBt.setOnClickListener(v -> {
             dialog.dismiss();
             finish();
+        });
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
+
+    private void openSelectCountryDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_country);
+        dialog.setCancelable(false);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        Button acceptBt = dialog.findViewById(R.id.bt_accept);
+        CardView cardOther = dialog.findViewById(R.id.cardOther);
+        CardView cardbangladesh = dialog.findViewById(R.id.cardbangladesh);
+        TextView tvCountry = dialog.findViewById(R.id.tvCountry);
+        TextView tvBangla = dialog.findViewById(R.id.tvBangla);
+
+
+        cardbangladesh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countrySelected = Constants.BANGLA;
+                tvBangla.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.light_green_400));
+                tvCountry.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.white));
+            }
+        });
+
+        cardOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countrySelected = Constants.OTHER_COUNTRY;
+                tvCountry.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.light_green_400));
+                tvBangla.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.white));
+            }
+        });
+
+        acceptBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (countrySelected.equals("")) {
+                    Toast.makeText(MainActivity.this, "Please select country", Toast.LENGTH_SHORT).show();
+                } else {
+                    SharedPreferences.Editor editor = getSharedPreferences("push", MODE_PRIVATE).edit();
+                    editor.putString("country", countrySelected);
+                    editor.apply();
+                    dialog.dismiss();
+                }
+            }
         });
 
         dialog.show();

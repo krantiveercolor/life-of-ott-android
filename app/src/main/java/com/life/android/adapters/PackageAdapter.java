@@ -1,7 +1,10 @@
 package com.life.android.adapters;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.life.android.R;
 import com.life.android.network.model.Package;
+import com.life.android.utils.Constants;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -24,7 +28,7 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHold
     private List<Package> packageList;
     private int c;
     private OnItemClickListener itemClickListener;
-    private String currency;
+    private String currency, selectedCountry = "";
 
     public PackageAdapter(Context context, List<Package> packageList, String currency) {
         this.context = context;
@@ -39,6 +43,8 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHold
         View view = LayoutInflater.from(context).inflate(R.layout.layout_package_item_2, parent,
                 false);
 
+        SharedPreferences sharedPreferences = context.getSharedPreferences("push", MODE_PRIVATE);
+        selectedCountry = sharedPreferences.getString("country", "");
         return new ViewHolder(view);
     }
 
@@ -48,7 +54,12 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHold
 
         Package pac = packageList.get(position);
         if (pac != null) {
-            holder.packagePrice.setText(currency + pac.getPrice());
+            if (selectedCountry.equals(Constants.BANGLA)) {
+                holder.packagePrice.setText(currency + pac.getPrice());
+            } else {
+                holder.packagePrice.setText("$" + pac.getUsdPrice());
+            }
+
             holder.packageName.setText(pac.getName());
             holder.packageValidity.setText("Valid for " + pac.getDay() + " days");
             Shimmer shimmer = new Shimmer();

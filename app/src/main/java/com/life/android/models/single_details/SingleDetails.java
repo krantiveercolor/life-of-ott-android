@@ -133,6 +133,20 @@ public class SingleDetails implements Parcelable {
     @Expose
     private String gstAmount = null;
 
+
+    @SerializedName("gst_percentage_in_usd")
+    @Expose
+    private String gstPercentageinUsd = null;
+
+    @SerializedName("price_in_usd")
+    @Expose
+    private String priceInUsd = null;
+
+    @SerializedName("gst_amount_in_usd")
+    @Expose
+    private String gstAmountInUsd = null;
+
+
     @SerializedName("final_price")
     @Expose
     private String finalPrice = null;
@@ -187,6 +201,11 @@ public class SingleDetails implements Parcelable {
         expiryOn = in.readString();
         payWatchDescription = in.readString();
         gstAmount = in.readString();
+
+        gstPercentageinUsd = in.readString();
+        priceInUsd = in.readString();
+        gstAmountInUsd = in.readString();
+
         finalPrice = in.readString();
         gstPercentage = in.readString();
         is_subscribed_previously = in.readString();
@@ -501,6 +520,30 @@ public class SingleDetails implements Parcelable {
         this.gstAmount = gstAmount;
     }
 
+    public String getGstPercentageinUsd() {
+        return gstPercentageinUsd;
+    }
+
+    public void setGstPercentageinUsd(String gstPercentageinUsd) {
+        this.gstPercentageinUsd = gstPercentageinUsd;
+    }
+
+    public String getPriceInUsd() {
+        return priceInUsd;
+    }
+
+    public void setPriceInUsd(String priceInUsd) {
+        this.priceInUsd = priceInUsd;
+    }
+
+    public String getGstAmountInUsd() {
+        return gstAmountInUsd;
+    }
+
+    public void setGstAmountInUsd(String gstAmountInUsd) {
+        this.gstAmountInUsd = gstAmountInUsd;
+    }
+
     public String getFinalPrice() {
         return finalPrice;
     }
@@ -574,6 +617,11 @@ public class SingleDetails implements Parcelable {
         dest.writeString(expiryOn);
         dest.writeString(payWatchDescription);
         dest.writeString(gstAmount);
+
+        dest.writeString(gstPercentageinUsd);
+        dest.writeString(priceInUsd);
+        dest.writeString(gstAmountInUsd);
+
         dest.writeString(finalPrice);
         dest.writeString(gstPercentage);
         dest.writeString(is_subscribed_previously);

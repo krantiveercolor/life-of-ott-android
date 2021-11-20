@@ -137,7 +137,7 @@
                     android:focusable="true"
                     android:foreground="?selectableItemBackgroundBorderless"
                     android:text="Forgot Password ?"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colourPurple"
                     android:textStyle="bold" />
 
                 <LinearLayout

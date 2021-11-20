@@ -70,7 +70,7 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
     private List<Package> packages = new ArrayList<>();
     private List<ImageView> imageViews = new ArrayList<>();
     private String currency = "";
-    private String exchangeRate, payTransId = "";
+    private String exchangeRate, payTransId = "", selectedCountry = "";
     private boolean isDark;
 
     private static PayPalConfiguration config = new PayPalConfiguration()
@@ -88,6 +88,7 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
         super.onCreate(savedInstanceState);
 
         SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
+        selectedCountry = sharedPreferences.getString("country", "");
         isDark = sharedPreferences.getBoolean("dark", false);
         activeSubscription = getIntent().getParcelableExtra("active_sub");
         /*if (isDark) {

@@ -14,6 +14,7 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
@@ -310,7 +311,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
     private String currentProgramTime;
     private String currentProgramTitle;
-    private String userId;
+    private String userId, selectedCountry = "";
 
     private RelativeLayout descriptionLayout;
     private boolean activeMovie;
@@ -360,6 +361,9 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
         progressImgView = findViewById(R.id.details_progress_img_view);
         Glide.with(this).load(R.drawable.logo_anim).into(progressImgView);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
+        selectedCountry = sharedPreferences.getString("country", "");
 
         //check vpn connection
         helperUtils = new HelperUtils(DetailsActivity.this);
@@ -748,7 +752,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                         }
                     } else {
                         showQueuePopup(DetailsActivity.this, null, getMediaInfo());
-
                     }
                 } else {
                     if (listServer.size() == 1) {
@@ -876,6 +879,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         });
 
         serverIv.setOnClickListener(v -> {
+
         });
 
         simpleExoPlayerView.setControllerVisibilityListener(visibility -> {
@@ -2391,7 +2395,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                         RecyclerView.VERTICAL, false));
                 EpisodeDownloadAdapter adapter = new EpisodeDownloadAdapter(DetailsActivity.this, selectedSeasonDownloadList, downloadViewModel);
                 seasonDownloadRecyclerView.setAdapter(adapter);
-
             }
 
             @Override
@@ -2408,7 +2411,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
     private void getMovieData(String vtype, String vId) {
         strDirector = "";
         strGenre = "";
-
         Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
         SingleDetailsApi api = retrofit.create(SingleDetailsApi.class);
         Call<SingleDetails> call = api.getSingleDetails(AppConfig.API_KEY, vtype, vId, PreferenceUtils.isLoggedIn(this) ? PreferenceUtils.getUserId(this) : "0");
@@ -2484,7 +2486,12 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                         payAndWatchBtn.setVisibility(VISIBLE);
                         watchNowBt.setVisibility(GONE);
                         if (singleDetails.getIs_subscribed_previously().equalsIgnoreCase("1")) {
-                            payAndWatchBtn.setText(String.format("Pay Again and watch for ৳%s", singleDetails.getPrice()));
+                            if (selectedCountry.equals(Constants.BANGLA)) {
+                                payAndWatchBtn.setText(String.format("Pay Again and watch for ৳%s", singleDetails.getPrice()));
+                            } else {
+                                payAndWatchBtn.setText(String.format("Pay Again and watch for $%s", singleDetails.getPrice()));
+                            }
+
                             if (singleDetails.getIs_rent_expired().equalsIgnoreCase("0")) {
                                 payAndWatchBtn.setVisibility(GONE);
                                 watchNowBt.setVisibility(VISIBLE);
@@ -2497,7 +2504,11 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                                 payWatchExpireStatusView.setText(getString(R.string.subscription_expired));
                             }
                         } else {
-                            payAndWatchBtn.setText(String.format("Pay and watch for ৳%s", singleDetails.getPrice()));
+                            if (selectedCountry.equals(Constants.BANGLA)) {
+                                payAndWatchBtn.setText(String.format("Pay and watch for ৳%s", singleDetails.getPrice()));
+                            } else {
+                                payAndWatchBtn.setText(String.format("Pay and watch for $%s", singleDetails.getPriceInUsd()));
+                            }
                         }
                     } else {
                         watchNowBt.setVisibility(VISIBLE);
