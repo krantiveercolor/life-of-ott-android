@@ -9,16 +9,16 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
     defaultConfig {
-        applicationId "com.life.android"
+        applicationId "com.lifeott.android"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 9
-        versionName "1.0.9"
+        versionCode 1
+        versionName "1.0.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         manifestPlaceholders = [
-                onesignal_app_id               : 'a9a10cb7-27dc-4be6-aa01-2314025fb386',
+                onesignal_app_id               : '389a40c4-7a61-462d-857d-ee2d8e0ccdab',
                 onesignal_google_project_number: 'REMOTE'
         ]
     }
@@ -190,7 +190,6 @@ dependencies {
 
     //SSL payment integration
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation (name: 'sslCommerzSdk', ext:'aar')
-
+    implementation(name: 'sslCommerzSdk', ext: 'aar')
 
 }

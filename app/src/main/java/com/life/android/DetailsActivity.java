@@ -848,8 +848,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             Uri uri = new ScreenShot(this).getBitmapUri(thumbIv); //get screen short
             Tools tools = new Tools();
             tools.shareMovieDetails(this, msg, uri);
-
-
         });
 
         //report icon
@@ -869,7 +867,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
                     Log.e("STATE PLAYER:::", String.valueOf(isPlaying));
                 } else if (playbackState == CastPlayer.STATE_BUFFERING) {
                     progressBar.setVisibility(VISIBLE);
-
                     Log.e("STATE PLAYER:::", String.valueOf(isPlaying));
                 } else {
                     Log.e("STATE PLAYER:::", String.valueOf(isPlaying));
@@ -2799,7 +2796,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
     }
 
     private void getComments() {
-
         Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
         CommentApi api = retrofit.create(CommentApi.class);
         Call<List<GetCommentsModel>> call = api.getAllComments(AppConfig.API_KEY, id);
@@ -2808,7 +2804,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             public void onResponse(Call<List<GetCommentsModel>> call, retrofit2.Response<List<GetCommentsModel>> response) {
                 if (response.code() == 200) {
                     listComment.addAll(response.body());
-
                     commentsAdapter.notifyDataSetChanged();
                 }
             }

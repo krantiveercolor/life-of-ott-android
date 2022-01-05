@@ -1,5 +1,6 @@
-keystore pass : action@123
+Gmail Login and same for one signal and firebase -  LifeofOTT
+Username : lifeoffott@gmail.com
+Password : Hateyou102
 
-Alias key : key0
-pass : action@123
-
+Password - colour_moon@123!
+Alias - colour_moon

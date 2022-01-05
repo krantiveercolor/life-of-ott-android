@@ -59,7 +59,8 @@ public class CMSFragment extends Fragment {
         } else if (from.equals(getString(R.string.pay_watch_terms_conditions))) {
             call = api.payAndWatchTermsAndConditions(AppConfig.API_KEY);
         } else if (from.equals(getString(R.string.support))) {
-            call = api.helpAndSupport(AppConfig.API_KEY);
+            //call = api.helpAndSupport(AppConfig.API_KEY);
+            call = api.aboutUs(AppConfig.API_KEY);
         }
         plainActivity.activityIndicator(true);
         call.enqueue(new Callback<CmsModel>() {

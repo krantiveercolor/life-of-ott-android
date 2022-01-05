@@ -161,7 +161,7 @@
                     android:foreground="?selectableItemBackgroundBorderless"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingTop="@dimen/_10sdp"
-                    android:text="@string/support"
+                    android:text="@string/about_us"
                     android:textColor="@color/white" />
 
                 <TextView

@@ -15,7 +15,9 @@ public interface LoginApi {
     @POST("login")
     Call<User> postLoginStatus(@Header("API-KEY") String apiKey,
                                @Field("email") String email,
-                               @Field("password") String password);
+                               @Field("password") String password,
+                               @Field("device_id") String deviceId,
+                               @Field("device_name") String deviceName);
 
     @FormUrlEncoded
     @POST("send_otp")

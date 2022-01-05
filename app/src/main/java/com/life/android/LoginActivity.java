@@ -2,6 +2,7 @@ package com.life.android;
 
 import static com.life.android.helper.CMExtenstionKt.hideKeyboard;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +39,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.life.android.database.DatabaseHelper;
+import com.life.android.helper.IConstants;
 import com.life.android.network.RetrofitClient;
 import com.life.android.network.apis.FirebaseAuthApi;
 import com.life.android.network.apis.LoginApi;
@@ -73,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ImageView phoneAuthButton, facebookAuthButton, googleAuthButton;
     private DatabaseHelper databaseHelper;
+    private String deviceId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,12 +181,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("HardwareIds")
     private void login(String email, final String password) {
+        deviceId = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
         btnLogin.setClickable(false);
         dialog.show();
         Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
         LoginApi api = retrofit.create(LoginApi.class);
-        Call<User> call = api.postLoginStatus(AppConfig.API_KEY, email, password);
+        Call<User> call = api.postLoginStatus(AppConfig.API_KEY, email, password, deviceId, android.os.Build.MODEL);
+        Log.d(TAG, "login: " + call);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
@@ -191,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                     assert response.body() != null;
                     if (response.body().getStatus().equalsIgnoreCase("success")) {
                         User user = response.body();
-                        /*if (user.getMobile_verified().equalsIgnoreCase("1")) {
+                        if (user.getMobile_verified().equalsIgnoreCase("1")) {
                             DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                             db.deleteUserData();
                             db.insertUserData(user);
@@ -206,7 +214,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra(IConstants.IntentString.type, IConstants.Fragments.otp);
                             intent.putExtra(IConstants.IntentString.payload, user);
                             startActivity(intent);
-                        }*/
+                        }
                         DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                         db.deleteUserData();
                         db.insertUserData(user);
@@ -561,7 +569,6 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (!user.getUid().isEmpty()) {
                     sendGoogleDataToServer();
-
                 } else {
                     //empty
                     googleSignIn();

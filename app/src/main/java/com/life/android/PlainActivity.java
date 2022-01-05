@@ -95,7 +95,7 @@ public class PlainActivity extends AppCompatActivity {
                     break;
                 }
                 case IConstants.Fragments.support: {
-                    binding.tvPlainActTitle.setText(getString(R.string.support));
+                    binding.tvPlainActTitle.setText(getString(R.string.about_us));
                     CMSFragment fragment = new CMSFragment();
                     fragment.from = getString(R.string.support);
                     loadFragment(fragment);

@@ -78,6 +78,9 @@ public class Constants {
     public static final String HASH_CONTENT_NAME = "#CONTENT_NAME";
     public static final String BASE_URL_SHARE = AppConfig.DOMAIN + "watch/";
 
+    public static final String SSL_PAYMENT_STORE_ID = "dhupc617f9467b3ff4";
+    public static final String SSL_PAYMENT_STORE_PASSWORD = "dhupc617f9467b3ff4@ssl";
+
 
     public interface WishListType {
         String fav = "fav";

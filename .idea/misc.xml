@@ -71,10 +71,11 @@
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/ic_bottom_livetv.xml" value="0.19907407407407407" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/ic_bottom_movie.xml" value="0.19907407407407407" />
         <entry key="..\:/life-of-ott/app/src/main/res/drawable/ic_hamburger_icon.xml" value="0.1962962962962963" />
-        <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_details.xml" value="0.15462962962962962" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_details.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_download.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_otp_new.xml" value="0.1" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_pass_reset.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_plain.xml" value="0.1921875" />
         <entry key="..\:/life-of-ott/app/src/main/res/layout/activity_profile.xml" value="0.2" />

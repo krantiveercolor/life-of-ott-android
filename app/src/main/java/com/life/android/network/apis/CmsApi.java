@@ -18,4 +18,7 @@ public interface CmsApi {
 
     @GET("pay_and_watch_terms_and_conditions")
     Call<CmsModel> payAndWatchTermsAndConditions(@Header("API-KEY") String apiKey);
+
+    @GET("about_us")
+    Call<CmsModel> aboutUs(@Header("API-KEY") String apiKey);
 }

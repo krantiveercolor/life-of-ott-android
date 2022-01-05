@@ -48,7 +48,7 @@ import retrofit2.Retrofit;
 public class SSLPayActivity extends AppCompatActivity implements SSLCTransactionResponseListener {
     private Package aPackage;
     private String amount = "";
-    private String transId = "", selectedCountry = "";
+    private String transId = "", selectedCountry = "", from = "";
     private ProgressBar progress;
 
     @Override
@@ -63,6 +63,7 @@ public class SSLPayActivity extends AppCompatActivity implements SSLCTransaction
         aPackage = (Package) getIntent().getSerializableExtra("package");
         amount = aPackage.getPrice();
         transId = getIntent().getStringExtra("transId");
+        from = getIntent().getStringExtra("from");
 
 
         if (selectedCountry.equals("")) {
@@ -162,7 +163,9 @@ public class SSLPayActivity extends AppCompatActivity implements SSLCTransaction
         HashMap<String, String> map = new HashMap<>();
         map.put("transaction_id", transId);
         map.put("ssl_commerz_payment_id", model.getTranId());
-        map.put("video_id", aPackage.getPlanId());
+        if (from.equals(Constants.PAY_WATCH)) {
+            map.put("video_id", aPackage.getPlanId());
+        }
         map.put("transaction_details", json);
         Retrofit retrofit = RetrofitClient.getAuthRetrofitInstance();
         PaymentApi paymentApi = retrofit.create(PaymentApi.class);

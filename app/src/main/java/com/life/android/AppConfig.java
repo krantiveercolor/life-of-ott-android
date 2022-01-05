@@ -4,8 +4,8 @@ public class AppConfig {
     /**
      * APIS URLS : All the server urls is in the below sections
      */
-    //public static final String DOMAIN = "https://actionott.com/";
-    public static final String DOMAIN = "https://lifeofott.com/";
+    //public static final String DOMAIN = "https://lifeofott.com/";
+    public static final String DOMAIN = "https://lifeott.com/";
     public static final String API_SERVER_URL = DOMAIN + "rest_api/";
     public static final String TERMS_URL = DOMAIN + "privacy-policy.html";
 

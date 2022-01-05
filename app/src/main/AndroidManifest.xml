@@ -140,9 +140,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.actionott.com"
-                    android:pathPrefix="/watch/"
-                    android:scheme="https" />
+                    android:host="www.lifeott.com"
+                    android:scheme="https"
+                    android:pathPrefix="/watch/" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -151,9 +151,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.actionott.com"
-                    android:path="/watch/"
-                    android:scheme="https" />
+                    android:host="www.lifeott.com"
+                    android:scheme="https"
+                    android:path="/watch/" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -162,9 +162,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.actionott.com"
-                    android:pathPrefix="/watch/"
-                    android:scheme="http" />
+                    android:host="www.lifeott.com"
+                    android:scheme="http"
+                    android:pathPrefix="/watch/" />
             </intent-filter>
         </activity> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
