@@ -43,8 +43,13 @@ public class SliderAdapter extends CardSliderAdapter<Slide> {
 
             textView.setText(slide.getTitle());
             imageView = view.findViewById(R.id.imageview);
-            PicassoUtil.with(context).load(slide.getThumbImageLink(),
-                    imageView, R.drawable.poster_placeholder);
+            if (slide.getThumbImageLink() != null) {
+                PicassoUtil.with(context).load(slide.getThumbImageLink(),
+                        imageView, R.drawable.poster_placeholder);
+            } else if (slide.getImageLink() != null) {
+                PicassoUtil.with(context).load(slide.getImageLink(),
+                        imageView, R.drawable.poster_placeholder);
+            }
 
       /*      Glide.with(context)
                     .load(slide.getThumbImageLink())
@@ -57,60 +62,62 @@ public class SliderAdapter extends CardSliderAdapter<Slide> {
                 @Override
                 public void onClick(View view) {
                     new Thread(() -> {
-                        if (slide.getActionType().equalsIgnoreCase("tvseries") || slide.getActionType().equalsIgnoreCase("movie")) {
-                            if (PreferenceUtils.isMandatoryLogin(getContext())) {
-                                if (PreferenceUtils.isLoggedIn(getContext())) {
+                        if (slide.getActionId() != null && slide.getActionType() != null) {
+                            if (slide.getActionType().equalsIgnoreCase("tvseries") || slide.getActionType().equalsIgnoreCase("movie")) {
+                                if (PreferenceUtils.isMandatoryLogin(getContext())) {
+                                    if (PreferenceUtils.isLoggedIn(getContext())) {
+                                        Intent intent = new Intent(getContext(), DetailsActivity.class);
+                                        intent.putExtra("vType", slide.getActionType());
+                                        intent.putExtra("id", slide.getActionId());
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        getContext().startActivity(intent);
+                                        ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
+                                    } else {
+                                        getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+                                        ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
+                                    }
+                                } else {
                                     Intent intent = new Intent(getContext(), DetailsActivity.class);
                                     intent.putExtra("vType", slide.getActionType());
                                     intent.putExtra("id", slide.getActionId());
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     getContext().startActivity(intent);
                                     ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
-                                } else {
-                                    getContext().startActivity(new Intent(getContext(), LoginActivity.class));
-                                    ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
                                 }
-                            } else {
-                                Intent intent = new Intent(getContext(), DetailsActivity.class);
-                                intent.putExtra("vType", slide.getActionType());
-                                intent.putExtra("id", slide.getActionId());
+
+                            } else if (slide.getActionType().equalsIgnoreCase("webview")) {
+                                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                                intent.putExtra("url", slide.getActionUrl());
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 getContext().startActivity(intent);
                                 ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
-                            }
+                            } else if (slide.getActionType().equalsIgnoreCase("external_browser")) {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(slide.getActionUrl()));
+                                browserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                getContext().startActivity(browserIntent);
+                                ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
 
-                        } else if (slide.getActionType().equalsIgnoreCase("webview")) {
-                            Intent intent = new Intent(getContext(), WebViewActivity.class);
-                            intent.putExtra("url", slide.getActionUrl());
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            getContext().startActivity(intent);
-                            ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
-                        } else if (slide.getActionType().equalsIgnoreCase("external_browser")) {
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(slide.getActionUrl()));
-                            browserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            getContext().startActivity(browserIntent);
-                            ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
-
-                        } else if (slide.getActionType().equalsIgnoreCase("tv")) {
-                            if (PreferenceUtils.isMandatoryLogin(getContext())) {
-                                if (PreferenceUtils.isLoggedIn(getContext())) {
+                            } else if (slide.getActionType().equalsIgnoreCase("tv")) {
+                                if (PreferenceUtils.isMandatoryLogin(getContext())) {
+                                    if (PreferenceUtils.isLoggedIn(getContext())) {
+                                        Intent intent = new Intent(getContext(), DetailsActivity.class);
+                                        intent.putExtra("vType", slide.getActionType());
+                                        intent.putExtra("id", slide.getActionId());
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        getContext().startActivity(intent);
+                                        ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
+                                    } else {
+                                        getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+                                        ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
+                                    }
+                                } else {
                                     Intent intent = new Intent(getContext(), DetailsActivity.class);
                                     intent.putExtra("vType", slide.getActionType());
                                     intent.putExtra("id", slide.getActionId());
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     getContext().startActivity(intent);
                                     ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
-                                } else {
-                                    getContext().startActivity(new Intent(getContext(), LoginActivity.class));
-                                    ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
                                 }
-                            } else {
-                                Intent intent = new Intent(getContext(), DetailsActivity.class);
-                                intent.putExtra("vType", slide.getActionType());
-                                intent.putExtra("id", slide.getActionId());
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                getContext().startActivity(intent);
-                                ((Activity) context).overridePendingTransition(R.anim.enter, R.anim.exit);
                             }
                         }
                     }).start();
