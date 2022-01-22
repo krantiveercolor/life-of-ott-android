@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                     assert response.body() != null;
                     if (response.body().getStatus().equalsIgnoreCase("success")) {
                         User user = response.body();
-                        if (user.getMobile_verified().equalsIgnoreCase("1")) {
+            /*            if (user.getMobile_verified().equalsIgnoreCase("1")) {
                             DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                             db.deleteUserData();
                             db.insertUserData(user);
@@ -214,7 +214,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra(IConstants.IntentString.type, IConstants.Fragments.otp);
                             intent.putExtra(IConstants.IntentString.payload, user);
                             startActivity(intent);
-                        }
+                        }*/
                         DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                         db.deleteUserData();
                         db.insertUserData(user);

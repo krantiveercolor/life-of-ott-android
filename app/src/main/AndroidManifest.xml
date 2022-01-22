@@ -30,6 +30,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@string/asset_statements" />
         <activity
             android:name=".SSLPayActivity"
             android:exported="true"
@@ -133,7 +136,8 @@
             android:theme="@style/TransDetailsScreenTheme"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity">
-            <intent-filter android:order="1">
+            <intent-filter android:order="1"
+                android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
